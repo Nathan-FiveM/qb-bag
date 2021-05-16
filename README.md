@@ -26,7 +26,7 @@ Head to your inventory script and look for the following code:
 ```
 Add the following line beneath the statement
 ```
-	if itemData.name == 'duffel-bag' then itemData.info.bagid = math.random(11111,99999)
+	if itemData.name == 'duffel-bag' then itemData.info.bagid = math.random(11111,99999) end
 ```
 It should now look like this:
 ```
