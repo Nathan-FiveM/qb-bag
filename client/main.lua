@@ -1,6 +1,6 @@
 local QBCore = exports['qb-core']:GetCoreObject()
 
-RegisterNetEvent('qb-bag:client:duffel-bag', function(BagId)
+RegisterNetEvent('qb-bag:client:duffelbag', function(BagId)
 	if not clothingitem then
     QBCore.Functions.Progressbar("use_bag", "Putting on Bag", 2000, false, true, {
         disableMovement = false,
