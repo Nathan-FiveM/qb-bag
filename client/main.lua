@@ -1,10 +1,6 @@
-QBCore = nil
+local QBCore = exports['qb-core']:GetCoreObject()
 
-TriggerEvent('QBCore:GetObject', function(obj) QBCore = obj end)
-
-RegisterNetEvent('qb-items:client:use:duffel-bag')
-AddEventHandler('qb-items:client:use:duffel-bag', function(BagId)
-	local player = PlayerPedId()
+RegisterNetEvent('qb-bag:client:duffel-bag', function(BagId)
 	if not clothingitem then
     QBCore.Functions.Progressbar("use_bag", "Putting on Bag", 2000, false, true, {
         disableMovement = false,
@@ -13,8 +9,8 @@ AddEventHandler('qb-items:client:use:duffel-bag', function(BagId)
 		disableCombat = true,
     }, {}, {}, {}, function() -- Done
 		RequestAnimDict(dict)
-		TaskPlayAnim(player, "clothingtie", "try_tie_negative_a", 3.0, 3.0, 2000, 51, 0, false, false, false)
-		Wait (600)
+		TaskPlayAnim(PlayerPedId(), "clothingtie", "try_tie_negative_a", 3.0, 3.0, 2000, 51, 0, false, false, false)
+		Wait(600)
 		ClearPedSecondaryTask(PlayerPedId())
 		SetPedComponentVariation(PlayerPedId(), 5, 41, 0, 2)
 		clothingitem = true
@@ -24,10 +20,10 @@ AddEventHandler('qb-items:client:use:duffel-bag', function(BagId)
 	elseif clothingitem then
 		clothingitem = false
 		RequestAnimDict(dict)
-		TaskPlayAnim(player, "clothingtie", "try_tie_negative_a", 3.0, 3.0, 2000, 51, 0, false, false, false)
-		Wait (600)
+		TaskPlayAnim(PlayerPedId(), "clothingtie", "try_tie_negative_a", 3.0, 3.0, 2000, 51, 0, false, false, false)
+		Wait(600)
 		ClearPedSecondaryTask(PlayerPedId())
 		SetPedComponentVariation(PlayerPedId(), 5, 0, 0, 2)
 	end
-	Citizen.Wait(1000)
+	Wait(1000)
 end)
